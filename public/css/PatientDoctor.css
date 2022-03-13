@@ -1,0 +1,17 @@
+
+#appointment-form{
+    padding: 30px 30px;
+    background-color: #31B8EC;
+}
+#cf-submit{
+    margin:10px 0;
+}
+.message{
+    background-color: cornflowerblue;
+    padding: 5px;
+    /* color:white; */
+    margin:10px 0;
+}
+
+
+

@@ -2,13 +2,7 @@
     <head>
 
         <title> patient </title>
-   <!--
 
-   Template 2098 Health
-
-   http://www.tooplate.com/view/2098-health
-
-   -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="description" content="">
@@ -22,10 +16,11 @@
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-        
+
         <!-- MAIN CSS -->
         <link rel="stylesheet" href="css/tooplate-style.css">
 
+        <title>Document</title>
    </head>
    <body>
 <header>
@@ -62,6 +57,12 @@
               <a class="navbar-brand">E-Healthcare System</a>
          </div>
 
+
+         {{--  --}}
+
+
+         {{-- / --}}
+
          <!-- MENU LINKS -->
          <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
@@ -78,6 +79,6 @@
     </div>
 </section>
 @yield('content')
-@yield('demo2')
+
 </body>
 </html>

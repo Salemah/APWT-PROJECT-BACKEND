@@ -15,54 +15,24 @@
  <!-- Make Appoinment section -->
  <section id="appointment" data-stellar-background-ratio="3">
           <div class="container">
-            <span class="text-success">{{Session::get('msg')}}</span><br>
-                         <!-- Register form -->
-                         <div class="w-75">
-                            <form id="appointment-form" role="form" method="post" action="{{route('Patient.Appointment')}}">
-                                {{csrf_field()}}
-                                <!-- Register section title -->
-                                <div class="section-title " >
-                                     <h2>Fill appoinment form</h2>
-                                </div>
-
-                                <div class="wow fadeInUp" data-wow-delay="0.8s">
-                                     <div class="col-md-4 col-sm-4 ">
-                                          <label for="name">Name</label>
-                                          <input type="text" value="{{Session::get('name')}}" class="form-control" id="name" name="name" placeholder="Full Name">
-                                     </div>
+            <div class="container">
+                <div class=" row  d-flex mt-5">
+                    {{-- @foreach($st as $s) --}}
+                  <div class="col bg-primary text-white m-1 p-2 rounded ">
+                  <div class="ms-5 py-2">
+                      <p>hello</p>
+                    {{-- <p>{{$s->name}}</p>
+                    <p>Problem-Type:{{$s->problemtype}}</p>
+                    <p>Date:{{$s->date}}</p> --}}
+                    {{-- <button type="button" class="btn btn-danger"> <a style="text-decoration: none" href="{{route('Appointment.Delete',['id'=>$s->id])}}">Delete</a></button> --}}
+                  </div>
 
 
+                  </div>
+                  {{-- @endforeach --}}
+                </div>
+              </div>
 
-                                      <div class="col-md-4 col-sm-4">
-                                          <label for="select">Select Problem type </label>
-                                          <select class="form-control" name="problem">
-                                               <option>Eye</option>
-                                               <option>Ear</option>
-                                               <option>Skin</option>
-
-                                          </select>
-                                     </div>
-
-                                     <div class="col-md-4 col-sm-4">
-                                          <label for="date">Select Date</label>
-                                          <input type="date" name="date" value="" class="form-control">
-                                     </div>
-
-                                     <div class="col-md-4 col-sm-4">
-                                     <label for="Message">Details</label>
-                                      <textarea class="form-control" rows="3" id="message" name="message" placeholder="Message"></textarea>
-                                     </div>
-
-
-                              <div class="col-md-12 col-sm-12">
-
-                                          <button type="submit" class="form-control" id="cf-submit" name="submit">Create appoinment</button>
-                                     </div>
-
-
-                                </div>
-                          </form>
-                         </div>
                     </div>
 
                </div>

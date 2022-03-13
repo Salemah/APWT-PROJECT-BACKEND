@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/kk', function () {
     return view('Patient.kk');
 });
+Route::get('/hd', function () {
+    return view('Patient.Shared.Footer');
+});
 Route::get( '/login', [LoginController::class,'index'] )->name( 'login' );
 Route::post( '/login', [LoginController::class,'verify'] )->name( 'login' );
 Route::get( '/register', [Regitercontroller::class,'register'] )->name( 'register' );
@@ -38,3 +41,6 @@ Route::get( '/home', 'homeController@index' )->name( 'home' );
  Route::post('/Patient/Appointment',[PatientProfileController::class,'PatientAppointment'])->name('Patient.Appointment');
  Route::get( '/Patient/Myappointment',  [PatientProfileController::class,'PatientMyappointment'] )->name( 'Patient.Myappointment' );
  Route::get('/Appointment/Delete',[PatientProfileController::class,'AppointmentDelete'])->name('Appointment.Delete');
+ Route::get( '/PatientMyProfile', [PatientProfileController::class,'PatientMyProfile'] )->name( 'PatientMyProfile' );
+ Route::get( '/PatientEditMyProfile/{id}', [PatientProfileController::class,'PatienteditMyProfile'] )->name( 'PatientEditMyProfile' );
+ Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditMyProfileSubmit'] )->name( 'PatientEditMyProfileSubmit' );

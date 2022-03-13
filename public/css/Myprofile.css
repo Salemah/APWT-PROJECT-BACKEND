@@ -1,0 +1,15 @@
+.myprofile{
+    background-color: blue;
+    color: white;
+    width: 50%;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+
+}
+.edit-button{
+    margin: 5px 0;
+}
+#edit-link{
+    text-decoration: none;
+}

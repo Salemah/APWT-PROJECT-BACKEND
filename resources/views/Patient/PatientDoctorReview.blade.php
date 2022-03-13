@@ -7,30 +7,35 @@
     <meta charset="utf-8">
     <title>Review doctor </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/> --}}
   </head>
   <body>
     <div class="container">
       <div class="post">
       </div>
       <div class="star-widget">
-        <input type="radio" name="rate" id="rate-5">
-        <label for="rate-5" class="fas fa-star"></label>
-       <input type="radio" name="rate" id="rate-4">
-        <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
-        <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
-        <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
-        <label for="rate-1" class="fas fa-star"></label>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                Column
+              </div>
+              <div class="col">
+                Column
+              </div>
+              <div class="col">
+                Column
+              </div>
+            </div>
+          </div>
         <form action="#">
-          <header></header>
+
+
           <div class="textarea">
             <textarea cols="30" placeholder="Give your review about this doctor..."></textarea>
           </div>
           <div class="btn">
-            <button type="submit">Post</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
