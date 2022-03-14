@@ -15,7 +15,7 @@
             @foreach($st as $s)
           <div class=" col-4 bg-primary text-white  rounded gy-3 me-1  ">
          <div class="py-2 ">
-            <p>{{$s->name}}</p>
+            <p>User Name : {{$s->username}}</p>
             <p>Problem-Type:{{$s->problemtype}}</p>
             <p>Date:{{$s->date}}</p>
             <button type="button" class="btn btn-danger"> <a style="text-decoration: none" href="{{route('Appointment.Delete',['id'=>$s->id])}}">Delete</a></button>

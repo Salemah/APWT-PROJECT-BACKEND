@@ -69,10 +69,11 @@
                    <li class="DoctorInfo-btn"><a href="/PatientDoctorInfo"> See doctor Info</a></li>
                    <li class="DoctorSchedule-btn"><a href="{{route('Doctor.Info')}} "> See Doctor Schedule</a></li>
                    <li class="DoctorReview-btn"><a href="{{route('Patient.Review')}}"> Review Doctor</a></li>
-                    <li class="DoctorContact-btn"><a href="{{route('Doctor.Conatct')}} "> Contact Doctor</a></li>
+
                     <li class="DoctorContact-btn"><a href="{{route('PatientDoctorPage')}} "> Get Appointment</a></li>
                     <li class="DoctorContact-btn"><a href="{{route('Patient.Myappointment')}} "> My Appointment</a></li>
                     <li><a href="{{route('logout')}}"><i class="flaticon-logout" aria-hidden="true" style="padding-right: 15px;"></i>logout</a></li>
+                    
                 </ul>
          </div>
 

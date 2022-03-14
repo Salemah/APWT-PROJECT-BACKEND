@@ -51,7 +51,7 @@
             @error('confirmpassword')
                 <span class="text-danger"> {{ $message }}</span><br>
             @enderror
-            <input  id="name" type="number" name="activee" defaultvalue=1><br>
+            {{-- <input  id="name" type="number" name="activee" defaultvalue=1><br> --}}
             <input id="button" type="submit" name="submit" value="Register">
         </form>
         {{-- <p>Not registerd?<a href="{{route('register')}}">Create an account</a></p> --}}

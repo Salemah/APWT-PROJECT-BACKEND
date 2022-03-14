@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointments;
 use App\Models\Users;
+use App\Models\Doctor;
 
 class PatientProfileController extends Controller
 {
@@ -22,8 +23,9 @@ class PatientProfileController extends Controller
 
 
     public function PatientDoctorInfoIndex(){
+        $dc = Doctor::all();
 
-        return view('Patient.PatientDoctorInfo');
+     return view('Patient.PatientDoctorInfo')->with('doctor',$dc);
 
     }
 
@@ -46,7 +48,7 @@ class PatientProfileController extends Controller
     }
     public function PatientAppointment(Request $req){
         $req->validate([
-            'name'=>'required',
+            'username'=>'required',
             'problem'=>'required',
             'date'=>'required',
             'message'=>'required|min:10',
@@ -58,10 +60,11 @@ class PatientProfileController extends Controller
 
         ]);
         $apt = new Appointments();
-        $apt->name = $req->name;
+        $apt->username = $req->username;
         $apt->problemtype = $req->problem;
         $apt->date = $req->date;
         $apt->details = $req->message;
+        $apt->offered_by = 2;
 
         $apt->save();
         session()->flash('msg','Appointment Success');
@@ -78,9 +81,18 @@ class PatientProfileController extends Controller
     public function PatientMyProfile(Request $req){
         $id= session()->get('id');
         $user = Users::where('id',$id)->first();
-        // $apt->delete();
-        return view('Patient.MyProfile')->with('user',$user);
 
+      return view('Patient.MyProfile')->with('user',$user);
+   //return $user->department->appointments;
+
+
+    }
+    public function RelationPatientApointmt(Request $req){
+        $id= session()->get('id');
+        $user = Users::where('id',$id)->first();
+
+    return view('Patient.RelationMyappointment')->with('user',$user);
+   return $user->department->appointments;
 
 
     }
@@ -94,12 +106,26 @@ class PatientProfileController extends Controller
 
     }
     public function PatienteditMyProfileSubmit(Request $req){
+        $user = Users::where('id',$req->id)->first();
+        $req->validate([
+            'name'=>'required|min:4',
 
-         $user = Users::where('id',$req->id)->first();
+            'email'=>'required|email',
+
+
+        ],
+        [
+            'name.min'=>'name must be 4 charecter'
+
+
+        ]);
+
+
          $user->name = $req->name;
          $user->email = $req->email;
          $user->save();
-         return "submitted done";
+         session()->flash('msg','Edit Success');
+         return redirect()->route('PatientMyProfile');
 
 
 

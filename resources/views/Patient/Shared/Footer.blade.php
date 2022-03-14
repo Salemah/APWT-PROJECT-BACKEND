@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <footer >
+    <footer  style="margin-top: 20px">
         {{--  --}}
         <div class="footer-btm">
             <div class="row footer-btm">

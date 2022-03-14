@@ -37,10 +37,10 @@
 
                         <div class="" >
                             <div class="col-md-4 col-sm-4 ">
-                                <label for="name">Name</label>
-                                <input type="text" value="{{ Session::get('name') }}" class="form-control" id="name"
-                                    name="name" placeholder="Full Name">
-                                    @error('name')
+                                <label for="name">User Name</label>
+                                <input type="text" value="{{ Session::get('username') }}" class="form-control" id="name"
+                                    name="username" placeholder="Full Name">
+                                    @error('username')
                                 <span class="text-danger"> {{ $message }}</span><br>
                               @enderror
                             </div>
@@ -101,7 +101,7 @@
 
 
 
-        
+
         <!-- SCRIPTS -->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>

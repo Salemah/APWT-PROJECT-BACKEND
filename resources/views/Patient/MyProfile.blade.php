@@ -10,14 +10,20 @@
     <title>Document</title>
 </head>
 <body>
+
     <div class="container myprofile">
+        @if(Session::get('msg') )
+        <span class="text-danger message">{{ Session::get('msg') }}</span><br>
+
+
+    @endif
         <h5>User Name : {{$user->username}}</h5>
         <h5>Name : {{$user->name}}</p>
             <h5>Email : {{$user->email}}</h5>
             <button class="btn btn-danger edit-button"><a id="edit-link" href="{{route('PatientEditMyProfile',['id'=>$user->id])}}">Edit</a> </button>
     </div>
 
-  
+
 </body>
 </html>
 @endsection

@@ -4,26 +4,36 @@
     <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+
+       <link rel="stylesheet" href="css/Myprofileedit.css">
+        <title>My Profile</title>
     </head>
 
     <body>
-        <form method="post" action="{{ route('PatientEditMyProfileSubmit') }}">
-            {{ csrf_field() }}
+        <div class="container "  style="background-color: #A8ADF4;
+        padding:15px 0;width:50% ;display:flex; justify-content:center" >
+            <div >
+                <form method="post" class="profileedit" action="{{ route('PatientEditMyProfileSubmit') }}">
+                    {{ csrf_field() }}
 
-            <input type="text" style="display: none" value="{{ $user->id }}" id="id" name="id"><br>
-            <label for="name">Name:</label><br>
-            <input type="text" value="{{ $user->name }}" id="name" name="name"><br>
-            <label for="name">User Name:</label><br>
-            <input type="text" disabled value="{{ $user->username }}" id="name" name="name"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" value="{{ $user->email }}" id="email" name="email"><br>
-            <input type="submit" value="Submit"><br>
+                    <input type="text" style="display: none" value="{{ $user->id }}" id="id" name="id"><br>
+                    <label for="name">Name:</label><br>
+                    <input type="text" value="{{ $user->name }}" id="name" name="name"><br>
+                    @error('name')
+                    <span class="text-danger"> {{ $message }}</span><br>
+                @enderror
+                    <label for="name">User Name:</label><br>
+                    <input type="text" disabled value="{{ $user->username }}" id="name" name="name"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" value="{{ $user->email }}" id="email" name="email"><br>
+                    @error('email')
+                    <span class="text-danger"> {{ $message }}</span><br>
+                @enderror
+                    <input type="submit" class="btn btn-danger butn my-3" value="Submit"><br>
 
-        </form>
+                </form>
+            </div>
+        </div>
     </body>
 
     </html>

@@ -37,18 +37,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/PatientDoctorInfo"> See doctor Info</a></li>
-              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="{{route('Doctor.Info')}} "> See Doctor Schedule</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('Doctor.Conatct')}} "> Contact Doctor</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('Patient.Review')}}"> Review Doctor</a>
-              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="{{route('PatientDoctorPage')}} "> Get Appointment</a>
               </li>
@@ -65,7 +58,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="{{route('PatientMyProfile')}}">Profile</a></li>
                   <li><a class="dropdown-item" href="{{route('logout')}}">logout</a></li>
-
+                  <li><a href="{{route('Relation.PatientApointmt')}}"><i class="flaticon-logout" aria-hidden="true" style="padding-right: 15px;"></i>My Profile</a></li>
                 </ul>
               </li>
             </ul>

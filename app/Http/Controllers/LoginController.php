@@ -53,7 +53,7 @@ class LoginController extends Controller {
                     return redirect()->route( 'admin.dashboard' );
                 }
                 else if ( $type == "patient" ) {
-                    $req->session()->put( 'uname', $username );
+                    $req->session()->put( 'username', $username );
                     $req->session()->put( 'name', $name );
                     $req->session()->put( 'type', $type );
                     $req->session()->put( 'password', $req->password );
