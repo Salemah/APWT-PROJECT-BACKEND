@@ -26,7 +26,7 @@ class LoginController extends Controller {
         }
 
         if ( count( $result ) > 0 ) {
-            if ( $active == 1 ) {
+          
                 if ( $type == "doctor" ) {
                     $req->session()->put( 'uname', $username );
                     $req->session()->put( 'type', $type );
@@ -65,11 +65,7 @@ class LoginController extends Controller {
                 else {
                     echo "type error";
                 }
-            } else {
 
-                session()->flash( 'msg', 'Your account is blocked' );
-                return redirect( '/login' );
-            }
 
         } else {
            session()->flash( 'msg', 'Invalid username or password' );

@@ -34,8 +34,8 @@ class Regitercontroller extends Controller
     $aptt->username = $req->username;
     $aptt->name = $req->name;
     $aptt->type = $req->problem;
-    $aptt->active = $req->activee;
-   
+    
+
 
     $aptt->email = $req->email;
     $aptt->password = $req->password;
