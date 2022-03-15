@@ -59,6 +59,44 @@
                                 <span class="text-danger"> {{ $message }}</span><br>
                               @enderror
                             </div>
+                            <div class="col-md-4 col-sm-4">
+                                <label for="select">Doctor </label>
+                                <select class="form-control" name="doctor">
+                                    @foreach($dc as $s)
+                                    <option>{{$s->name}}</option>
+                                    @endforeach
+
+
+                                </select>
+                                @error('doctor')
+                                <span class="text-danger"> {{ $message }}</span><br>
+                              @enderror
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <label for="select">Day</label>
+                                <select class="form-control" name="day">
+                                    < @foreach($dc as $s)
+                                    <option>{{$s->day}}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('doctor')
+                                <span class="text-danger"> {{ $message }}</span><br>
+                              @enderror
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <label for="select">Slot</label>
+                                <select class="form-control" name="slot">
+                                    < @foreach($dc as $s)
+                                    <option>{{$s->slot}}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('doctor')
+                                <span class="text-danger"> {{ $message }}</span><br>
+                              @enderror
+                            </div>
+
 
                             <div class="col-md-4 col-sm-4">
                                 <label for="date">Select Date</label>

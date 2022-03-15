@@ -59,6 +59,7 @@
                   <li><a class="dropdown-item" href="{{route('PatientMyProfile')}}">Profile</a></li>
                   <li><a class="dropdown-item" href="{{route('logout')}}">logout</a></li>
                   <li><a href="{{route('Relation.PatientApointmt')}}"><i class="flaticon-logout" aria-hidden="true" style="padding-right: 15px;"></i>My Profile</a></li>
+                  <li><a href="{{route('Patient.testAppointment')}}"><i class="flaticon-logout" aria-hidden="true" style="padding-right: 15px;"></i>My Profile</a></li>
                 </ul>
               </li>
             </ul>

@@ -44,4 +44,8 @@ Route::get( '/home', 'homeController@index' )->name( 'home' );
  Route::get( '/PatientMyProfile', [PatientProfileController::class,'PatientMyProfile'] )->name( 'PatientMyProfile' )->middleware('authorized');;
  Route::get( '/PatientEditMyProfile/{id}', [PatientProfileController::class,'PatienteditMyProfile'] )->name( 'PatientEditMyProfile' )->middleware('authorized');;
  Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditMyProfileSubmit'] )->name( 'PatientEditMyProfileSubmit' )->middleware('authorized');;
- Route::get( '/RelationPatientApointmt', [PatientProfileController::class,'RelationPatientApointmt'] )->name( 'Relation.PatientApointmt' )->middleware('authorized');;
+ Route::get( '/RelationPatientApointmt', [PatientProfileController::class,'RelationPatientApointmt'] )->name( 'Relation.PatientApointmt' )->middleware('authorized');
+//
+ Route::get( '/Patient/testAppointment', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' )->middleware('authorized');
+ Route::post( '/Patient/testAppointmentsubmit', [PatientProfileController::class,'PatientTestAppointmentsubmit'] )->name( 'Patient.testAppointmentsubmit' )->middleware('authorized');
+ Route::post( '/Patient/testdcAppointmentsubmit', [PatientProfileController::class,'PatientTestDCAppointmentsubmit'] )->name( 'Patient.dctestAppointmentsubmit' )->middleware('authorized');

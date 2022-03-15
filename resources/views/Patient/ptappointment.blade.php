@@ -18,6 +18,8 @@
             <p>User Name : {{$s->username}}</p>
             <p>Problem-Type:{{$s->problemtype}}</p>
             <p>Date:{{$s->date}}</p>
+            <p>Day:{{$s->day}}</p>
+            <p>Slot:{{$s->slot}}</p>
             <button type="button" class="btn btn-danger"> <a style="text-decoration: none" href="{{route('Appointment.Delete',['id'=>$s->id])}}">Delete</a></button>
           </div>
 
