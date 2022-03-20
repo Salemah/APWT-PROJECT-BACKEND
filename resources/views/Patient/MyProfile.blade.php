@@ -13,14 +13,14 @@
 
     <div class="container myprofile">
         @if(Session::get('msg') )
-        <span class="text-danger message">{{ Session::get('msg') }}</span><br>
+        <span class=" message" style="background-color: blanchedalmond;padding:3px;color:black">{{ Session::get('msg') }}</span><br>
 
 
     @endif
         <h5>User Name : {{$user->username}}</h5>
         <h5>Name : {{$user->name}}</p>
             <h5>Email : {{$user->email}}</h5>
-            <button class="btn btn-danger edit-button"><a id="edit-link" href="{{route('PatientEditMyProfile',['id'=>$user->id])}}">Edit</a> </button>
+            <button class="btn btn-danger edit-button"><a id="edit-link" style="color:white" href="{{route('PatientEditMyProfile',['id'=>$user->id])}}">Edit</a> </button>
     </div>
 
 

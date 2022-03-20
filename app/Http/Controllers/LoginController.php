@@ -26,7 +26,7 @@ class LoginController extends Controller {
         }
 
         if ( count( $result ) > 0 ) {
-          
+
                 if ( $type == "doctor" ) {
                     $req->session()->put( 'uname', $username );
                     $req->session()->put( 'type', $type );
@@ -59,7 +59,7 @@ class LoginController extends Controller {
                     $req->session()->put( 'password', $req->password );
                     $req->session()->put( 'id', $id );
 
-                    return redirect( '/PatientDoctor' );
+                    return redirect()->route('Patient.testAppointment');
                 }
 
                 else {

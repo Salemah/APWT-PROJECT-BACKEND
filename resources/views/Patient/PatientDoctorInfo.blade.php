@@ -10,28 +10,41 @@
 </head>
 <body>
   <div class="container" style="display:flex;justify-content:center">
-    <div class="" >
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Day</th>
+    <div class=" " style="background-color: rgb(120, 224, 216);padding:5px;margin-bottom:20px" >
 
 
-            </tr>
-        @foreach($doctor as $s)
-            <tr>
 
-
-                <td>{{$s->email}}</td>
-                <td>{{$s->name}}</td>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Day1</th>
+                <th scope="col">Slot1</th>
+                <th scope="col">Day2</th>
+                <th scope="col">Slot2</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach($doctor as $s)
+              <tr>
+                {{-- <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td> --}}
+                <td>{{$s->dname}}</td>
+                <td>{{$s->day}}</td>
                 <td>{{$s->slot}}</td>
+                <td>{{$s->day2}}</td>
+                <td>{{$s->slot2}}</td>
+              </tr>
 
-                {{-- <td> <a href="{{route('students.edit',['id'=>encrypt($s->id)])}}"><button class="btn btn-primary"> edit</button></td>
-                <td> <a href="{{route('students.delete',['id'=>encrypt($s->id)])}}"><button class="btn btn-primary"> Delete</button></td> --}}
-            </tr>
-        @endforeach
-    </table>
+              @endforeach
+            </tbody>
+          </table>
+
+
+
+
     </div>
   </div>
 </body>

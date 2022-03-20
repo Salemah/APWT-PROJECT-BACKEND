@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Appointments;
 use App\Models\Users;
 use App\Models\Doctor;
+use App\Models\Doctorslot;
 
 class PatientProfileController extends Controller
 {
@@ -59,28 +60,27 @@ class PatientProfileController extends Controller
         $aptt->date = $req->date;
         $aptt->details = $req->message;
         $aptt->doctor = $req->doctor;
-        // if ($req->slot == 'Slot') {
-        //     $apt->slot = $req->slot2;
-        //     $apt->day = $req->day2;
-        // } else {
+        if ($req->slot == 'Slot') {
+            $aptt->slot = $req->slot2;
+            $aptt->day = $req->day2;
+         } else {
             $aptt->slot = $req->slot;
             $aptt->day = $req->day;
-            
-        // }
+
+         }
 
 
         $aptt->save();
         session()->flash('msg', 'Appointment Success');
-        //return redirect()->route('PatientDoctorPage');
-        //$doctor =  Doctor::where('name',$req->doctor)->first();
-        // return $doctor->doctorslot;
-        return "hello";
+        return redirect()->route('Patient.testAppointment');
+
+
     }
 
 
     public function PatientDoctorInfoIndex()
     {
-        $dc = Doctor::all();
+        $dc = Doctorslot::all();
 
         return view('Patient.PatientDoctorInfo')->with('doctor', $dc);
     }
@@ -130,6 +130,8 @@ class PatientProfileController extends Controller
         $apt->doctor = $req->doctor;
         $apt->slot = $req->slot;
         $apt->day = $req->day;
+        $apt->slot = $req->slot;
+        $apt->day = $req->day;
 
         $apt->save();
         session()->flash('msg', 'Appointment Success');
@@ -140,7 +142,8 @@ class PatientProfileController extends Controller
 
         $apt = Appointments::where('id', $req->id)->first();
         $apt->delete();
-        return "<p>user deleted</p>";
+        session()->flash('msg', 'Appointment Deleted');
+        return redirect()->route('Patient.Myappointment');
     }
     public function PatientMyProfile(Request $req)
     {

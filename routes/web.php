@@ -34,7 +34,10 @@ Route::get( '/home', 'homeController@index' )->name( 'home' );
  //patient route
  Route::get( '/PatientSignup', [PatientProfileController::class,'PatientSignUpIndex'] );
 
- Route::get( '/PatientDoctor', [PatientProfileController::class,'PatientDoctorPageIndex'] )->name( 'PatientDoctorPage' )->middleware('authorized');;
+ Route::get( '/PatientDoctor', [PatientProfileController::class,'PatientDoctorPageIndex'] )->name( 'PatientDoctorPage' )->middleware('authorized');
+//
+ Route::get( '/PatientDoctorr', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' )->middleware('authorized');
+//
  Route::get( '/PatientDoctorInfo', [PatientProfileController::class,'PatientDoctorInfoIndex'] )->name( 'Doctor.Info' )->middleware('authorized');;
  Route::get( '/PatientDoctorContact', [PatientProfileController::class,'PatientDoctorContactIndex'] )->name( 'Doctor.Conatct' )->middleware('authorized');;
  Route::get( '/PatientDoctorReview',  [PatientProfileController::class,'PatientDoctorReviewIndex'] )->name( 'Patient.Review' )->middleware('authorized');;

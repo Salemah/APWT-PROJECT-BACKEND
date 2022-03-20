@@ -43,7 +43,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{{route('PatientDoctorPage')}} "> Get Appointment</a>
+                <a class="nav-link" href="{{route('Patient.testAppointment')}} "> Get Appointment</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('Patient.Myappointment')}} "> My Appointment</a>
@@ -76,40 +76,12 @@
 
       <footer >
         {{--  --}}
-        <div class="container fotter-bottom">
-            <div class="row">
-              <div class="col-md-4 col-sm-12">
-                <div class="footer-link">
-                    <a href="#">Laboratory Tests</a><br>
-                    <a href="#">Departments</a><br>
-                    <a href="#">Insurance Policy</a><br>
-                    <a href="#">Careers</a><br>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <div class="footer-link">
-                    <a href="#">Laboratory Tests</a><br>
-                    <a href="#">Departments</a><br>
-                    <a href="#">Insurance Policy</a><br>
-                    <a href="#">Careers</a><br>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <div class="footer-link">
-                    <a href="#">Laboratory Tests</a><br>
-                    <a href="#">Departments</a><br>
-                    <a href="#">Insurance Policy</a><br>
-                    <a href="#">Careers</a><br>
-                </div>
-              </div>
-            </div>
-
-          </div>
+       
           <div class="copyright-text">
             <p>Copyright &copy; 2022 Salem Ahmed
 
                 </p>
-        </div>
+          </div>
         {{--  --}}
 
 
