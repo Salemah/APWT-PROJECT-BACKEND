@@ -53,7 +53,7 @@ class PatientProfileController extends Controller
 
 
             ]
-        );
+            );
         $aptt = new Appointments();
         $aptt->username = $req->username;
         $aptt->problemtype = $req->problem;

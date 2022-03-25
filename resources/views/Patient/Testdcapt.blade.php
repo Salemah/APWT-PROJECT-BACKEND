@@ -13,7 +13,7 @@
 
 
 
-      
+
 
 
         <!-- Make Appoinment section -->
@@ -27,7 +27,7 @@
                 <!-- Register form -->
                 <div class="formmm">
 
-                    <form id="appointment-form" method="post" action="{{ route('Patient.dctestAppointmentsubmit') }}">
+                    <form  method="post" action="{{ route('Patient.dctestAppointmentsubmit') }}">
                         {{ csrf_field() }}
                         <!-- Register section title -->
                         <div class="section-title ">
@@ -88,26 +88,7 @@
                                   <span class="text-danger"> {{ $message }}</span><br>
                               @enderror
                             </div>
-                            {{--  --}}
-                            {{-- <div class="col-md-4 col-sm-4">
-                                <label for="select">Day</label>
-                                <select class="form-control" name="day">
-                                    <option>{{ $dc->day }}</option>
-                                </select>
-                                @error('doctor')
-                                    <span class="text-danger"> {{ $message }}</span><br>
-                                @enderror
-                            </div> --}}
-                            {{-- <div class="col-md-4 col-sm-4">
-                                <label for="select">Slot</label>
-                                <select class="form-control" name="slot">
-                                    <option>{{ $dc->slot }}</option>
-                                </select>
-                                @error('doctor')
-                                    <span class="text-danger"> {{ $message }}</span><br>
-                                @enderror
-                            </div> --}}
-                            {{--  --}}
+
                             <div class="col-md-4 col-sm-4">
                                 <label for="select">Day2</label>
                                 <select class="form-select " name="day2">
@@ -118,15 +99,7 @@
                                   <span class="text-danger"> {{ $message }}</span><br>
                               @enderror
                             </div>
-                            {{-- <div class="col-md-4 col-sm-4">
-                                <label for="select">Day2</label>
-                                <select class="form-control" name="day">
-                                    <option>{{ $dc->day2 }}</option>
-                                </select>
-                                @error('doctor')
-                                    <span class="text-danger"> {{ $message }}</span><br>
-                                @enderror
-                            </div> --}}
+
                             <div class="col-md-4 col-sm-4">
                                 <label for="select">Slot2</label>
                                 <select class="form-select " name="slot2">
@@ -137,16 +110,7 @@
                                   <span class="text-danger"> {{ $message }}</span><br>
                               @enderror
                             </div>
-                            {{-- <div class="col-md-4 col-sm-4">
-                                <label for="select">Slot2</label>
-                                <select class="form-control" name="slot">
-                                    <option>Select Day</option>
-                                    <option>{{ $dc->slot2 }}</option>
-                                </select>
-                                @error('doctor')
-                                    <span class="text-danger"> {{ $message }}</span><br>
-                                @enderror
-                            </div> --}}
+
 {{--  --}}
 
                             <div class="col-md-4 col-sm-4">
@@ -164,7 +128,7 @@
                                     <span class="text-danger"> {{ $message }}</span><br>
                                 @enderror
                             </div>
-                            {{--  --}}
+
 
 {{--  --}}
                             <div class="col-md-4col-sm-4">
