@@ -37,7 +37,7 @@
                 <span class="text-danger"> {{ $message }}</span><br>
             @enderror
             <br>
-            <select class="form-control" id="name" name="problem">
+            <select class="form-control" id="name" name="type">
                 <option>patient</option>
 
             </select>

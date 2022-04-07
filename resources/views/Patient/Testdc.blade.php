@@ -4,8 +4,7 @@
     <html lang="en">
         <head>
             <link rel="stylesheet" href="css/PatientDoctor.css">
-
-        </head>
+</head>
 
     <body id="top">
 
