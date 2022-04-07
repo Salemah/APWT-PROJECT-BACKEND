@@ -48,9 +48,8 @@ class Regitercontroller extends Controller
         $aptt->password = $req->password;
         $aptt->save();
         session()->flash('msg', 'Registration Success');
-        // return redirect()->route('login');
         return response()->json([
-            'success' => 'Registration Successful. wait for approval!',
+            'success' => 'Registration Successful.!',
         ]);
     }
     }

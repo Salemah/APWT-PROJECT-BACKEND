@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller {
 
@@ -13,63 +13,69 @@ class LoginController extends Controller {
     }
 
     public function verify( Request $req ) {
+        $validator = Validator::make(
+            $req->all(), [
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+
+
+            ],
+            [
+                'email.email' => 'Invalid email address!',
+                'password.required' => 'Password is required!',
+
+            ]
+        );
+        if ($validator->fails()) {
+            return response()->json([
+                'validation_errors' => $validator->errors(),
+            ]);
+        }
+
+        else
+    {
         $result = Users::where('email',$req->email)
         ->where('password',$req->password)->get();
 
-        foreach ( $result as $res ) {
+
+
+       foreach ( $result as $res ) {
             $username = $res->username;
+            $email = $res->email;
             $name = $res->name;
-            $type = $res->type;
-            $id = $res->id;
-            $active = $res->active;
-
-        }
-
+             $type = $res->type;
+             $id = $res->id;
+            }
         if ( count( $result ) > 0 ) {
+            if ( $type == "patient" )
+            {
+                        return response()->json([
+                        'success' => $username,
+                    ]);
 
-                if ( $type == "doctor" ) {
-                    $req->session()->put( 'uname', $username );
-                    $req->session()->put( 'type', $type );
-                    $req->session()->put( 'password', $req->password );
-                    $req->session()->put( 'id', $id );
+            }
 
-                    return view( 'doctor.dashboard' );
-                } else if ( $type == "receptionist" ) {
-                    $req->session()->put( 'uname', $username );
-                    $req->session()->put( 'type', $type );
-                    $req->session()->put( 'password', $req->password );
-                    $req->session()->put( 'id', $id );
-
-                    return redirect( '/reception/dashboard' );
-
-                    //admin
-                } else if ( $type == "admin" ) {
-                    $req->session()->put( 'uname', $username );
-                    $req->session()->put( 'type', $type );
-                    $req->session()->put( 'password', $req->password );
-                    $req->session()->put( 'id', $id );
-
-
-                    return redirect()->route( 'admin.dashboard' );
-                }
-                else if ( $type == "patient" ) {
-                    $req->session()->put( 'username', $username );
-                    $req->session()->put( 'name', $name );
-                    $req->session()->put( 'type', $type );
-                    $req->session()->put( 'password', $req->password );
-                    $req->session()->put( 'id', $id );
-
-                    return redirect()->route('Patient.testAppointment');
-                }
-
-                else {
-                    echo "type error";
-                }
-
-
-        } else {
-           session()->flash( 'msg', 'Invalid username or password' );
-            return redirect( '/login' );
+            else {
+                return response()->json([
+                    'role' => 'doesnot match',
+                    'message' => 'User not Found'
+                ]);
         }
     }
+        else if( !$email ==''  ) {
+            return response()->json([
+                'status' => 'notFound',
+                'message' => 'User not Found'
+            ]);
+
+
+    }
 }
+    }}
+
+
+
+    //
+
+
+    
