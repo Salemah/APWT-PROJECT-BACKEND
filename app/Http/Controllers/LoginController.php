@@ -34,42 +34,56 @@ class LoginController extends Controller {
 
         else
     {
+
         $result = Users::where('email',$req->email)
-        ->where('password',$req->password)->get();
-
-
-
-       foreach ( $result as $res ) {
-            $username = $res->username;
-            $email = $res->email;
-            $name = $res->name;
-             $type = $res->type;
-             $id = $res->id;
-            }
-        if ( count( $result ) > 0 ) {
-            if ( $type == "patient" )
+        ->where('password',$req->password)->first();
+        if($result){
+            if ( $result->type == "patient" )
             {
-                        return response()->json([
-                        'success' => $username,
-                    ]);
-
-            }
-
-            else {
                 return response()->json([
-                    'role' => 'doesnot match',
-                    'message' => 'User not Found'
+                    'success' => "bgfbfb",
                 ]);
+            }
         }
-    }
-        else if( !$email ==''  ) {
+        else{
             return response()->json([
-                'status' => 'notFound',
-                'message' => 'User not Found'
+                'validation_errors' => "password & email mismatced",
             ]);
+        }
 
 
-    }
+
+    //    foreach ( $result as $res ) {
+    //         $username = $res->username;
+    //         $email = $res->email;
+    //         $name = $res->name;
+    //          $type = $res->type;
+    //          $id = $res->id;
+    //         }
+    //     if ( count( $result ) > 0 ) {
+    //         if ( $type == "patient" )
+    //         {
+    //                     return response()->json([
+    //                     'success' => $username,
+    //                 ]);
+
+    //         }
+
+    //         else {
+    //             return response()->json([
+    //                 'role' => 'doesnot match',
+    //                 'message' => 'User not Found'
+    //             ]);
+    //     }
+    // }
+    //     else if( !$email ==''  ) {
+    //         return response()->json([
+    //             'status' => 'notFound',
+    //             'message' => 'User not Found'
+    //         ]);
+
+
+    // }
 }
     }}
 
@@ -78,4 +92,4 @@ class LoginController extends Controller {
     //
 
 
-    
+
