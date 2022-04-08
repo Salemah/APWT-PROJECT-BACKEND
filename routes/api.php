@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\Regitercontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post( 'register/submit', [Regitercontroller::class,'registersubmit'] )->name( 'register.submit' );
 Route::post('/login', [LoginController::class,'verify'] );
+//get all doctor api
+Route::get( '/alldoctor', [PatientProfileController::class,'Alldoctor']);
+//
+
+
 

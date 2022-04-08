@@ -16,16 +16,21 @@ class PatientProfileController extends Controller
         return view('Patient.PatientSignup');
     }
 
-    public function PatientDoctorPageIndex()
+    public function Alldoctor()
     {
-        $doctor =  Doctor::all();
+        // $doctor =  Doctor::all();
 
-        return view('Patient.PatientDoctorPage')->with('dc', $doctor);
+            // return response()->json(["msg" => "found"], 200);
+            return Doctor::all();
+
+
+
+        // return view('Patient.PatientDoctorPage')->with('dc', $doctor);
     }
     public function PatientTestAppointment()
     {
         $doctor =  Doctor::all();
-
+        //return response()->json(["msg" => "found"], 200);
         return view('Patient.Testdc')->with('dc', $doctor);
     }
     public function PatientTestAppointmentsubmit(Request $req)

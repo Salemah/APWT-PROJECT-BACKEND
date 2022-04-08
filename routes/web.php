@@ -34,21 +34,22 @@ Route::get( '/home', 'homeController@index' )->name( 'home' );
  //patient route
  Route::get( '/PatientSignup', [PatientProfileController::class,'PatientSignUpIndex'] );
 
- Route::get( '/PatientDoctor', [PatientProfileController::class,'PatientDoctorPageIndex'] )->name( 'PatientDoctorPage' )->middleware('authorized');
+ Route::get( '/alldoctor', [PatientProfileController::class,'Alldoctor'] )->name( 'PatientDoctorPage' );
 //
  Route::get( '/PatientDoctorr', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' )->middleware('authorized');
 //
- Route::get( '/PatientDoctorInfo', [PatientProfileController::class,'PatientDoctorInfoIndex'] )->name( 'Doctor.Info' )->middleware('authorized');;
- Route::get( '/PatientDoctorContact', [PatientProfileController::class,'PatientDoctorContactIndex'] )->name( 'Doctor.Conatct' )->middleware('authorized');;
+ Route::get( '/PatientDoctorInfo', [PatientProfileController::class,'PatientDoctorInfoIndex'] )->name( 'Doctor.Info' );
+ Route::get( '/PatientDoctorContact', [PatientProfileController::class,'PatientDoctorContactIndex'] )->name( 'Doctor.Conatct' );
  Route::get( '/PatientDoctorReview',  [PatientProfileController::class,'PatientDoctorReviewIndex'] )->name( 'Patient.Review' )->middleware('authorized');;
- Route::post('/Patient/Appointment',[PatientProfileController::class,'PatientAppointment'])->name('Patient.Appointment')->middleware('authorized');;
- Route::get( '/Patient/Myappointment',  [PatientProfileController::class,'PatientMyappointment'] )->name( 'Patient.Myappointment' )->middleware('authorized');;
- Route::get('/Appointment/Delete',[PatientProfileController::class,'AppointmentDelete'])->name('Appointment.Delete')->middleware('authorized');;
- Route::get( '/PatientMyProfile', [PatientProfileController::class,'PatientMyProfile'] )->name( 'PatientMyProfile' )->middleware('authorized');;
- Route::get( '/PatientEditMyProfile/{id}', [PatientProfileController::class,'PatienteditMyProfile'] )->name( 'PatientEditMyProfile' )->middleware('authorized');;
- Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditMyProfileSubmit'] )->name( 'PatientEditMyProfileSubmit' )->middleware('authorized');;
- Route::get( '/RelationPatientApointmt', [PatientProfileController::class,'RelationPatientApointmt'] )->name( 'Relation.PatientApointmt' )->middleware('authorized');
+ Route::post('/Patient/Appointment',[PatientProfileController::class,'PatientAppointment'])->name('Patient.Appointment');
+ Route::get( '/Patient/Myappointment',  [PatientProfileController::class,'PatientMyappointment'] )->name( 'Patient.Myappointment' );
+//  Route::get( '/Patient/Myappointment',  [PatientProfileController::class,'PatientMyappointment'] )->name( 'Patient.Myappointment' )->middleware('authorized');;
+ Route::get('/Appointment/Delete',[PatientProfileController::class,'AppointmentDelete'])->name('Appointment.Delete');
+ Route::get( '/PatientMyProfile', [PatientProfileController::class,'PatientMyProfile'] )->name( 'PatientMyProfile' );
+ Route::get( '/PatientEditMyProfile/{id}', [PatientProfileController::class,'PatienteditMyProfile'] )->name( 'PatientEditMyProfile' );
+ Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditMyProfileSubmit'] )->name( 'PatientEditMyProfileSubmit' );
+ Route::get( '/RelationPatientApointmt', [PatientProfileController::class,'RelationPatientApointmt'] )->name( 'Relation.PatientApointmt' );
 //
- Route::get( '/Patient/testAppointment', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' )->middleware('authorized');
+ Route::get( '/Patient/testAppointment', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' );
  Route::post( '/Patient/testAppointmentsubmit', [PatientProfileController::class,'PatientTestAppointmentsubmit'] )->name( 'Patient.testAppointmentsubmit' )->middleware('authorized');
  Route::post( '/Patient/testdcAppointmentsubmit', [PatientProfileController::class,'PatientTestDCAppointmentsubmit'] )->name( 'Patient.dctestAppointmentsubmit' )->middleware('authorized');
