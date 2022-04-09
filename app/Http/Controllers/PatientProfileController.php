@@ -7,6 +7,7 @@ use App\Models\Appointments;
 use App\Models\Users;
 use App\Models\Doctor;
 use App\Models\Doctorslot;
+use Illuminate\Support\Facades\Validator;
 
 class PatientProfileController extends Controller
 {
@@ -15,18 +16,100 @@ class PatientProfileController extends Controller
 
         return view('Patient.PatientSignup');
     }
-
+// all doctror get from database
     public function Alldoctor()
     {
-        // $doctor =  Doctor::all();
 
-            // return response()->json(["msg" => "found"], 200);
-            return Doctor::all();
+             return Doctor::all();
 
 
 
-        // return view('Patient.PatientDoctorPage')->with('dc', $doctor);
+
     }
+
+
+    //api start
+    public function DoctorSlot(Request $req)
+
+    {
+        return Doctorslot::all();
+        // $doctor =  Doctorslot::where('dcid', $req->dcid)->first();
+        // //return $doctor->doctorslot->dname;
+        // return response()->json( ['message' => 'User Found'], 200);
+        // // return view('Patient.Testdcapt')->with('dc', $doctor->doctorslot);
+    }
+
+    public function PatientAppointmentsubmit(Request $req)
+    {
+        $validator = Validator::make(
+            $req->all(),
+
+             [
+
+                'patientname' => 'required',
+                'patientid' => 'required',
+                'dname' => 'required',
+                'dcid' => 'required',
+                'slot' => 'required',
+                'day' => 'required',
+                'date' => 'required',
+
+            ]
+    );
+    if ($validator->fails()) {
+        return response()->json([
+            'validation_errors' => $validator->errors(),
+        ]);
+    }
+    else{
+        $aptt = new Appointments();
+        $aptt->patientname = $req->patientname;
+        $aptt->patientid = $req->patientid;
+        $aptt->slot = $req->slot;
+        $aptt->day = $req->day ;
+        $aptt->date = $req->date;
+
+        $aptt->dname = $req->dname;
+        $aptt->dcid = $req->dcid;
+
+         $aptt->save();
+        session()->flash('msg', 'Appointment Success');
+        return response()->json([
+            'success' => 'Appointment Successful.!',
+        ]);
+    }
+
+    }
+    public function Myappointment(Request $req)
+    {
+        //return Appointments::all();
+         $st = Appointments::where('patientid', $req->id)->get();
+        // if($st){
+        //     foreach ( $st as $res ) {
+        //                 $username = $res->username;
+        //                  $email = $res->email;
+        //                $name = $res->name;
+        //                   $type = $res->type;
+        //                   $id = $res->id;
+        //                 }}
+         return response()->json($st,200);
+        // return view('Patient.ptappointment')->with('st', $st);
+    }
+
+    public function SingleDoctoresehudel(Request $req)
+    {
+        $doctor =  Doctorslot::where('dcid', $req->dcid)->first();
+        //return $doctor->doctorslot->dname;
+        return response()->json( ['message' => 'User Found'], 200);
+        // return view('Patient.Testdcapt')->with('dc', $doctor->doctorslot);
+    }
+
+
+
+    //api end
+
+
+
     public function PatientTestAppointment()
     {
         $doctor =  Doctor::all();

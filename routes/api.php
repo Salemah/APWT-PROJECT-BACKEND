@@ -24,7 +24,15 @@ Route::post( 'register/submit', [Regitercontroller::class,'registersubmit'] )->n
 Route::post('/login', [LoginController::class,'verify'] );
 //get all doctor api
 Route::get( '/alldoctor', [PatientProfileController::class,'Alldoctor']);
-//
+Route::get( '/doctorslot', [PatientProfileController::class,'DoctorSlot']);
+//apoint submit
+Route::post( '/Patient/Appointmentsubmit', [PatientProfileController::class,'PatientAppointmentsubmit'] );
+//my appointmnt get api
+Route::get( '/Patient/Myappointment/{id}',  [PatientProfileController::class,'Myappointment'] );
+
+
+//single doctor shedule
+Route::get( '/alldoctor/sgedule', [PatientProfileController::class,'SingleDoctoresehudel']);
 
 
 

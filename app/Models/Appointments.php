@@ -12,10 +12,10 @@ class Appointments extends Model
     use HasFactory;
      protected $table='appointmentss';
     public $timestamps=false;
-    public function appointmentpatient(){
-        return $this->hasMany(patientdepartment::class,'a_id');
-    }
-    public function department(){
-        return $this->hasMany(department::class,'offered_by');
-    }
+    // public function appointmentpatient(){
+    //     return $this->hasMany(patientdepartment::class,'a_id');
+    // }
+    // public function department(){
+    //     return $this->hasMany(department::class,'offered_by');
+    // }
 }
