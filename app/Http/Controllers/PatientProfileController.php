@@ -106,6 +106,20 @@ class PatientProfileController extends Controller
         // return redirect()->route('Patient.Myappointment');
     }
 
+    //myprofile
+    public function PatientProfile(Request $req)
+    {
+
+        $user = Users::where('id', $req->id)->first();
+        if($user){
+            return response()->json($user, 200);
+        }
+        //return view('Patient.MyProfile')->with('user', $user);
+        //return $user->department->appointments;
+
+
+    }
+
     public function SingleDoctoresehudel(Request $req)
     {
         $doctor =  Doctorslot::where('dcid', $req->dcid)->first();

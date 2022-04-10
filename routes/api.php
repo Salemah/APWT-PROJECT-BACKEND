@@ -31,7 +31,8 @@ Route::post( '/Patient/Appointmentsubmit', [PatientProfileController::class,'Pat
 Route::get( '/Patient/Myappointment/{id}',  [PatientProfileController::class,'Myappointment'] );
 //DELETE MY APPOINTMENT
 Route::post('/Appointment/Delete/{id}',[PatientProfileController::class,'AppointmentDelete']);
-
+//patient my profile
+Route::get( '/PatientMyProfile/{id}', [PatientProfileController::class,'PatientProfile'] );
 //single doctor shedule
 Route::get( '/alldoctor/sgedule', [PatientProfileController::class,'SingleDoctoresehudel']);
 
