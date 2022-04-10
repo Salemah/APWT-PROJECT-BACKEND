@@ -29,7 +29,8 @@ Route::get( '/doctorslot', [PatientProfileController::class,'DoctorSlot']);
 Route::post( '/Patient/Appointmentsubmit', [PatientProfileController::class,'PatientAppointmentsubmit'] );
 //my appointmnt get api
 Route::get( '/Patient/Myappointment/{id}',  [PatientProfileController::class,'Myappointment'] );
-
+//DELETE MY APPOINTMENT
+Route::post('/Appointment/Delete/{id}',[PatientProfileController::class,'AppointmentDelete']);
 
 //single doctor shedule
 Route::get( '/alldoctor/sgedule', [PatientProfileController::class,'SingleDoctoresehudel']);

@@ -80,20 +80,30 @@ class PatientProfileController extends Controller
     }
 
     }
+    //GET ALL MY APPOINMNET API
     public function Myappointment(Request $req)
     {
         //return Appointments::all();
          $st = Appointments::where('patientid', $req->id)->get();
-        // if($st){
-        //     foreach ( $st as $res ) {
-        //                 $username = $res->username;
-        //                  $email = $res->email;
-        //                $name = $res->name;
-        //                   $type = $res->type;
-        //                   $id = $res->id;
-        //                 }}
+
          return response()->json($st,200);
-        // return view('Patient.ptappointment')->with('st', $st);
+
+    }
+    // DELET MY APPOINEMT
+    public function AppointmentDelete(Request $req)
+    {
+
+        $apt = Appointments::where('id', $req->id)->first();
+        if($apt->delete()){
+            return response()->json(["success" => " Appointment Delete Succesfull"], 200);
+
+        }
+        else{
+            return response()->json(["msg" => "notfound"], 404);
+        }
+
+        // session()->flash('msg', 'Appointment Deleted');
+        // return redirect()->route('Patient.Myappointment');
     }
 
     public function SingleDoctoresehudel(Request $req)
@@ -225,14 +235,14 @@ class PatientProfileController extends Controller
         session()->flash('msg', 'Appointment Success');
         return redirect()->route('PatientDoctorPage');
     }
-    public function AppointmentDelete(Request $req)
-    {
+    // public function AppointmentDelete(Request $req)
+    // {
 
-        $apt = Appointments::where('id', $req->id)->first();
-        $apt->delete();
-        session()->flash('msg', 'Appointment Deleted');
-        return redirect()->route('Patient.Myappointment');
-    }
+    //     $apt = Appointments::where('id', $req->id)->first();
+    //     $apt->delete();
+    //     session()->flash('msg', 'Appointment Deleted');
+    //     return redirect()->route('Patient.Myappointment');
+    // }
     public function PatientMyProfile(Request $req)
     {
         $id = session()->get('id');
