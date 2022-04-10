@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Token;
 use App\Models\Users;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -40,6 +43,18 @@ class LoginController extends Controller
                 ->where('password', $req->password)->first();
             if ($result) {
                 if ($result->type == "patient") {
+
+
+                    $api_token = Str::random(64);
+                     $token = new Token();
+                    $token->type = $result->type;
+                    $token->token = $api_token;
+                     $token->userId = $result->id;
+                     $token->created_at = new DateTime();
+                     $token->expired_at = new DateTime();
+                     $token->save();
+
+
                     return response()->json([
                         'status' => 'success',
                         'message' => 'Login Successfully',
@@ -61,39 +76,20 @@ class LoginController extends Controller
 
 
 
-            //    foreach ( $result as $res ) {
-            //         $username = $res->username;
-            //         $email = $res->email;
-            //         $name = $res->name;
-            //          $type = $res->type;
-            //          $id = $res->id;
-            //         }
-            //     if ( count( $result ) > 0 ) {
-            //         if ( $type == "patient" )
-            //         {
-            //                     return response()->json([
-            //                     'success' => $username,
-            //                 ]);
-
-            //         }
-
-            //         else {
-            //             return response()->json([
-            //                 'role' => 'doesnot match',
-            //                 'message' => 'User not Found'
-            //             ]);
-            //     }
-            // }
-            //     else if( !$email ==''  ) {
-            //         return response()->json([
-            //             'status' => 'notFound',
-            //             'message' => 'User not Found'
-            //         ]);
-
-
-            // }
         }
     }
+    public function loggedOut(Request $request){
+        $token = Token::where('token', $request->token)->first();
+        $token->expired_at = new DateTime();
+        $token->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Logged out successfully!'
+        ]);
+
+    }
+
+
 }
 
 

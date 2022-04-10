@@ -16,15 +16,11 @@ class PatientProfileController extends Controller
 
         return view('Patient.PatientSignup');
     }
-// all doctror get from database
+    // all doctror get from database
     public function Alldoctor()
     {
 
-             return Doctor::all();
-
-
-
-
+        return Doctor::all();
     }
 
 
@@ -33,10 +29,6 @@ class PatientProfileController extends Controller
 
     {
         return Doctorslot::all();
-        // $doctor =  Doctorslot::where('dcid', $req->dcid)->first();
-        // //return $doctor->doctorslot->dname;
-        // return response()->json( ['message' => 'User Found'], 200);
-        // // return view('Patient.Testdcapt')->with('dc', $doctor->doctorslot);
     }
 
     public function PatientAppointmentsubmit(Request $req)
@@ -44,7 +36,7 @@ class PatientProfileController extends Controller
         $validator = Validator::make(
             $req->all(),
 
-             [
+            [
 
                 'patientname' => 'required',
                 'patientid' => 'required',
@@ -55,55 +47,47 @@ class PatientProfileController extends Controller
                 'date' => 'required',
 
             ]
-    );
-    if ($validator->fails()) {
-        return response()->json([
-            'validation_errors' => $validator->errors(),
-        ]);
-    }
-    else{
-        $aptt = new Appointments();
-        $aptt->patientname = $req->patientname;
-        $aptt->patientid = $req->patientid;
-        $aptt->slot = $req->slot;
-        $aptt->day = $req->day ;
-        $aptt->date = $req->date;
+        );
+        if ($validator->fails()) {
+            return response()->json([
+                'validation_errors' => $validator->errors(),
+            ]);
+        } else {
+            $aptt = new Appointments();
+            $aptt->patientname = $req->patientname;
+            $aptt->patientid = $req->patientid;
+            $aptt->slot = $req->slot;
+            $aptt->day = $req->day;
+            $aptt->date = $req->date;
 
-        $aptt->dname = $req->dname;
-        $aptt->dcid = $req->dcid;
+            $aptt->dname = $req->dname;
+            $aptt->dcid = $req->dcid;
 
-         $aptt->save();
-        session()->flash('msg', 'Appointment Success');
-        return response()->json([
-            'success' => 'Appointment Successful.!',
-        ]);
-    }
-
+            $aptt->save();
+            session()->flash('msg', 'Appointment Success');
+            return response()->json([
+                'success' => 'Appointment Successful.!',
+            ]);
+        }
     }
     //GET ALL MY APPOINMNET API
     public function Myappointment(Request $req)
     {
         //return Appointments::all();
-         $st = Appointments::where('patientid', $req->id)->get();
+        $st = Appointments::where('patientid', $req->id)->get();
 
-         return response()->json($st,200);
-
+        return response()->json($st, 200);
     }
     // DELET MY APPOINEMT
     public function AppointmentDelete(Request $req)
     {
 
         $apt = Appointments::where('id', $req->id)->first();
-        if($apt->delete()){
+        if ($apt->delete()) {
             return response()->json(["success" => " Appointment Delete Succesfull"], 200);
-
-        }
-        else{
+        } else {
             return response()->json(["msg" => "notfound"], 404);
         }
-
-        // session()->flash('msg', 'Appointment Deleted');
-        // return redirect()->route('Patient.Myappointment');
     }
 
     //myprofile
@@ -111,20 +95,47 @@ class PatientProfileController extends Controller
     {
 
         $user = Users::where('id', $req->id)->first();
-        if($user){
+        if ($user) {
             return response()->json($user, 200);
         }
-        //return view('Patient.MyProfile')->with('user', $user);
-        //return $user->department->appointments;
+    }
+
+    //patientprofile edit
+    public function PatienteditProfile(Request $req)
+    {
+        $users = Users::where('id', $req->id)->first();
+        $validator = Validator::make(
+            $req->all(),
+
+            [
+                'name' => 'required|min:4|max:20',
+                'email' => 'required|email',
+
+            ]
+        );
+        if ($validator->fails()) {
+            return response()->json([
+                'validation_errors' => $validator->errors(),
+            ]);
+        } else {
 
 
+            $users->name = $req->name;
+            $users->email = $req->email;
+            $users->update();
+           // return response()->json($users);
+
+            return response()->json([
+                'success' => 'Update Successful.!',
+            ]);
+        }
     }
 
     public function SingleDoctoresehudel(Request $req)
     {
         $doctor =  Doctorslot::where('dcid', $req->dcid)->first();
         //return $doctor->doctorslot->dname;
-        return response()->json( ['message' => 'User Found'], 200);
+        return response()->json(['message' => 'User Found'], 200);
         // return view('Patient.Testdcapt')->with('dc', $doctor->doctorslot);
     }
 
@@ -165,7 +176,7 @@ class PatientProfileController extends Controller
 
 
             ]
-            );
+        );
         $aptt = new Appointments();
         $aptt->username = $req->username;
         $aptt->problemtype = $req->problem;
@@ -175,18 +186,15 @@ class PatientProfileController extends Controller
         if ($req->slot == 'Slot') {
             $aptt->slot = $req->slot2;
             $aptt->day = $req->day2;
-         } else {
+        } else {
             $aptt->slot = $req->slot;
             $aptt->day = $req->day;
-
-         }
+        }
 
 
         $aptt->save();
         session()->flash('msg', 'Appointment Success');
         return redirect()->route('Patient.testAppointment');
-
-
     }
 
 

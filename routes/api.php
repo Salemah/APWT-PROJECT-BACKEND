@@ -33,6 +33,10 @@ Route::get( '/Patient/Myappointment/{id}',  [PatientProfileController::class,'My
 Route::post('/Appointment/Delete/{id}',[PatientProfileController::class,'AppointmentDelete']);
 //patient my profile
 Route::get( '/PatientMyProfile/{id}', [PatientProfileController::class,'PatientProfile'] );
+//updatePatientPofile api
+Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditProfile'] );
+
+
 //single doctor shedule
 Route::get( '/alldoctor/sgedule', [PatientProfileController::class,'SingleDoctoresehudel']);
 
