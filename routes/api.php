@@ -38,6 +38,8 @@ Route::get( '/PatientMyProfile/{id}', [PatientProfileController::class,'PatientP
 Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditProfile'] );
 //email get
 Route::get( '/test', [Mailcontroller::class,'Sendemail']);
+//logoutapi
+Route::post( '/logout', [LoginController::class,'loggedOut']);
 
 
 //single doctor shedule

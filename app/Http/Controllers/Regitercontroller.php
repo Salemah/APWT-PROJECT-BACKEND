@@ -51,12 +51,10 @@ class Regitercontroller extends Controller
         $aptt->save();
 
         if($aptt->save()){
-
-
-        //Register Success Full Mail
-        $sub= "$req->name  Succesfull";
-        $body= " $req->name Registration Succesfull I  19-39383-1";
-       Mail::to("tanvir738810@gmail.com")->send(new Sendmail($sub,$body));
+       //Register Success Full Mail
+        $sub= ` Succesfull`;
+        $body= "Dear  $req->name Your Registration Succesfull ";
+       Mail::to("$req->email")->send(new Sendmail($sub,$body));
 
         return response()->json([
             'success' => 'Registration Successful.!',

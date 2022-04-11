@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Appointmentmail;
 use Illuminate\Http\Request;
 use App\Models\Appointments;
 use App\Models\Users;
 use App\Models\Doctor;
 use App\Models\Doctorslot;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class PatientProfileController extends Controller
@@ -59,15 +61,22 @@ class PatientProfileController extends Controller
             $aptt->slot = $req->slot;
             $aptt->day = $req->day;
             $aptt->date = $req->date;
-
+            $aptt->pemail = $req->pemail;
             $aptt->dname = $req->dname;
             $aptt->dcid = $req->dcid;
-
             $aptt->save();
-            session()->flash('msg', 'Appointment Success');
+            if($aptt->save()){
+                //Register Success Full Mail
+                 $sub= ` Succesfull`;
+                 $body= "Dear  $req->patientname Your Appointment Succesfull ";
+                Mail::to("$req->pemail")->send(new Appointmentmail($sub,$body));
+
+
+
             return response()->json([
                 'success' => 'Appointment Successful.!',
             ]);
+        }
         }
     }
     //GET ALL MY APPOINMNET API
@@ -123,7 +132,7 @@ class PatientProfileController extends Controller
             $users->name = $req->name;
             $users->email = $req->email;
             $users->update();
-           
+
             return response()->json([
                 'success' => 'Update Successful.!',
             ]);

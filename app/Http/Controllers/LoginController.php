@@ -51,7 +51,7 @@ class LoginController extends Controller
                     $token->token = $api_token;
                      $token->userId = $result->id;
                      $token->created_at = new DateTime();
-                     $token->expired_at = new DateTime();
+
                      $token->save();
 
 
@@ -62,6 +62,7 @@ class LoginController extends Controller
                         'name' => $result->name,
                         'email' => $result->email,
                         'type' => $result->type,
+                        'token' => $api_token,
                         'username' => $result->username,
 
 
@@ -78,16 +79,19 @@ class LoginController extends Controller
 
         }
     }
-    public function loggedOut(Request $request){
-        $token = Token::where('token', $request->token)->first();
+    public function loggedOut(Request $req){
+         $token = Token::where('token', $req->token)->first();
         $token->expired_at = new DateTime();
         $token->save();
+       if($token){
         return response()->json([
             'status' => 'success',
             'message' => 'Logged out successfully!'
         ]);
+       }
 
     }
+
 
 
 }

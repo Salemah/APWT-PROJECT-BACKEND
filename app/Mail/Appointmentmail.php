@@ -7,12 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Sendmail extends Mailable
+class Appointmentmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $body;
     public $sub;
-
     /**
      * Create a new message instance.
      *
@@ -31,6 +30,6 @@ class Sendmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome new user!')->view('email.emplate')->with('body',$this->body)->with('sub',$this->sub);
+        return $this->subject('AppointMent Success')->view('email.emplate')->with('body',$this->body)->with('sub',$this->sub);
     }
 }
