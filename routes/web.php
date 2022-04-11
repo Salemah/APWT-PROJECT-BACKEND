@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Regitercontroller;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\Mailcontroller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,3 +55,7 @@ Route::get( '/home', 'homeController@index' )->name( 'home' );
  Route::get( '/Patient/testAppointment', [PatientProfileController::class,'PatientTestAppointment'] )->name( 'Patient.testAppointment' );
  Route::post( '/Patient/testAppointmentsubmit', [PatientProfileController::class,'PatientTestAppointmentsubmit'] )->name( 'Patient.testAppointmentsubmit' )->middleware('authorized');
  Route::post( '/Patient/testdcAppointmentsubmit', [PatientProfileController::class,'PatientTestDCAppointmentsubmit'] )->name( 'Patient.dctestAppointmentsubmit' )->middleware('authorized');
+
+ //
+//mailing
+Route::get( '/mailing', [Mailcontroller::class,'Sendemail'] );

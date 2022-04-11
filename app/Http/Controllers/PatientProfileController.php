@@ -123,8 +123,7 @@ class PatientProfileController extends Controller
             $users->name = $req->name;
             $users->email = $req->email;
             $users->update();
-           // return response()->json($users);
-
+           
             return response()->json([
                 'success' => 'Update Successful.!',
             ]);

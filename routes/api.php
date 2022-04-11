@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Mailcontroller;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\Regitercontroller;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ Route::post('/Appointment/Delete/{id}',[PatientProfileController::class,'Appoint
 Route::get( '/PatientMyProfile/{id}', [PatientProfileController::class,'PatientProfile'] );
 //updatePatientPofile api
 Route::post( '/PatientEditMyProfile', [PatientProfileController::class,'PatienteditProfile'] );
+//email get
+Route::get( '/test', [Mailcontroller::class,'Sendemail']);
 
 
 //single doctor shedule
