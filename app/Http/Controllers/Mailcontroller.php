@@ -14,11 +14,11 @@ class Mailcontroller extends Controller
      public function Sendemail()
 
     {
-        $e_sub= "Successfully Send Email";
-        $e_body= "I Have Created Mail => 19-39383-1";
-       Mail::to("tanvir.ahmed@aiub.edu")->send(new Sendmail($e_sub,$e_body));
+        $sub= "Successfully Send Email";
+        $body= "I Have Created Mail => 19-39383-1";
+       Mail::to("tanvir738810@gmail.com")->send(new Sendmail($sub,$body));
        return view('email.emplate')
-       ->with('body',$this->body)
-       ->with('sub',$this->sub);
+       ->with('body',$body)
+       ->with('sub',$sub);
     }
 }

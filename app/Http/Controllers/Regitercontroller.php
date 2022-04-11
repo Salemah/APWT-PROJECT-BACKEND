@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Sendmail;
 use App\Models\Appointments;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator ;
 
 class Regitercontroller extends Controller
@@ -47,10 +49,19 @@ class Regitercontroller extends Controller
         $aptt->email = $req->email;
         $aptt->password = $req->password;
         $aptt->save();
-        session()->flash('msg', 'Registration Success');
+
+        if($aptt->save()){
+
+
+        //Register Success Full Mail
+        $sub= "$req->name  Succesfull";
+        $body= " $req->name Registration Succesfull I  19-39383-1";
+       Mail::to("tanvir738810@gmail.com")->send(new Sendmail($sub,$body));
+
         return response()->json([
             'success' => 'Registration Successful.!',
         ]);
+    }
     }
     }
 
