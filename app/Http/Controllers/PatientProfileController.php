@@ -22,7 +22,11 @@ class PatientProfileController extends Controller
     public function Alldoctor()
     {
 
-        return Doctor::all();
+        $result = Users::where('type', 'doctor')->get();
+        if ($result) {
+            return response()->json($result, 200);
+
+       }
     }
 
 
@@ -30,6 +34,7 @@ class PatientProfileController extends Controller
     public function DoctorSlot(Request $req)
 
     {
+
         return Doctorslot::all();
     }
 
