@@ -51,6 +51,7 @@ class LoginController extends Controller
                     $token->token = $api_token;
                      $token->userId = $result->id;
                      $token->created_at = new DateTime();
+                     $token->created_at = new DateTime();
 
                      $token->save();
 
